@@ -35,13 +35,13 @@ def analyze_security_group(security_group=None):
         raise Exception("No security group provided")
 
 
-def remediate(bad_sg_id, instance_sec_groups, client) -> bool:
+def remediate(bad_sg_id, good_sg_id, instance_sec_groups, client) -> bool:
     new_sec_group_ids = [
         sec_group["GroupId"]
         for sec_group in instance_sec_groups
         if sec_group["GroupId"] != bad_sg_id
     ]
-    new_sec_group_ids.append(args.fix)
+    new_sec_group_ids.append(good_sg_id)
     try:
         client.modify_instance_attribute(
             InstanceId=instance.get("InstanceId"),
@@ -94,8 +94,10 @@ if __name__ == "__main__":
                                                     f"Bad security group {bad_sg_id} found to be associated with {instance.get('InstanceId')}"
                                                 )
                                                 print("Now remediating")
+                                                good_sg_id = args.fix
                                                 if remediate(
                                                     bad_sg_id,
+                                                    good_sg_id,
                                                     instance_sec_groups,
                                                     client,
                                                 ):
