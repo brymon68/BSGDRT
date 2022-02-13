@@ -8,11 +8,12 @@ BSGDRT can be used to detect running EC2 instances with overly permissive AWS Se
 ## Installation
 
 1. If for some reason you dont have aws-cli tools, go grab them here:  https://awscli.amazonaws.com/AWSCLIV2.pkg 
-2. ```python3 -m venv ./venv```
-3. ```source ./venv/bin/activate``` 
-4. ```pip install boto3```
-5. Provide account credentials for an account you would like to audit:  ```aws configure```  
-6. ```python run.py -h ``` 
+2. Clone BSGDRT and cd into the root of the directory. 
+3. ```python3 -m venv ./venv```
+4. ```source ./venv/bin/activate``` 
+5. ```pip install boto3```
+6. Provide account credentials for an account you would like to audit:  ```aws configure```  
+7. ```python run.py -h ``` 
 
 ## Command line options
 
