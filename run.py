@@ -113,6 +113,8 @@ if __name__ == "__main__":
                                                 print(
                                                     f"Bad security group is not associated with any EC2 instances"
                                                 )
+                        else:
+                            print("No fix argument passed, exiting")
             except ClientError as e:
                 print(e)
     else:
